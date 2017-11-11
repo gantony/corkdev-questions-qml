@@ -2,6 +2,8 @@ TEMPLATE = app
 
 QT += core qml quick widgets
 
+CONFIG += c++11
+
 INCLUDEPATH += $$PWD/client
 
 SOURCES += \
@@ -9,13 +11,15 @@ SOURCES += \
     $$PWD/client/SWGHelpers.cpp \
     $$PWD/client/SWGHttpRequest.cpp \
     $$PWD/client/SWGPublicApi.cpp \
-    $$PWD/client/SWGQuestion.cpp
+    $$PWD/client/SWGQuestion.cpp \
+    $$PWD/ApiWrapper.cpp
 
 HEADERS += \
     $$PWD/client/SWGHelpers.h \
     $$PWD/client/SWGHttpRequest.h \
     $$PWD/client/SWGPublicApi.h \
-    $$PWD/client/SWGQuestion.h
+    $$PWD/client/SWGQuestion.h \
+    $$PWD/ApiWrapper.h
 
 RESOURCES += qml.qrc
 

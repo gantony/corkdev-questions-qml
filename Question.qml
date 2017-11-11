@@ -9,6 +9,7 @@ Item {
     width: parent.width
     height: content.height + 20
 
+    property int question_id : -1   // We'll get that from the server
     property int votes: 0
     property string question: ""
 
@@ -33,6 +34,10 @@ Item {
                     Layout.alignment: Qt.AlignHCenter
                     style: SmallButtonStyle {}
                     text: "+"
+
+                    onClicked: {
+                        api.upvote(question_id)
+                    }
                 }
                 Text {
                     Layout.alignment: Qt.AlignHCenter

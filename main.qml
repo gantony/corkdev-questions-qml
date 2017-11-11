@@ -12,32 +12,30 @@ ApplicationWindow {
     color: "#f7f3ea"
 
 
+    Connections {
+        target: api
+        onQuestionsChanged: {
+            questionsModel.replaceQuestions(questions)
+        }
+    }
+
+    Component.onCompleted: {
+        api.fetchQuestions()
+    }
+
     ListModel {
         id: questionsModel
 
-        ListElement {
-            votes: 20
-            question: "what is this talk about??"
-        }
-        ListElement {
-            votes: 5
-            question: "What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? "
-        }
-        ListElement {
-            votes: 20
-            question: "what is this talk about??"
-        }
-        ListElement {
-            votes: 5
-            question: "What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? "
-        }
-        ListElement {
-            votes: 20
-            question: "what is this talk about??"
-        }
-        ListElement {
-            votes: 5
-            question: "What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? What is this talk about?? "
+        function replaceQuestions(questions) {
+            questionsModel.clear()
+            for(var i = 0; i < questions.length; i++) {
+                var listElement = {
+                    votes: questions[i].votes,
+                    question: questions[i].question,
+                    question_id: questions[i].id
+                }
+                questionsModel.append(listElement)
+            }
         }
     }
 
@@ -50,6 +48,7 @@ ApplicationWindow {
         header: Header {}
 
         delegate: Question {
+            question_id: model.question_id
             votes: model.votes
             question: model.question
         }

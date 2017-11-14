@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     // Swagger::SWGPublicApi * publicApi = new Swagger::SWGPublicApi("virtserver.swaggerhub.com", "/gantony/CorkDevQuestions/1.0.0");
-    Swagger::SWGPublicApi * publicApi = new Swagger::SWGPublicApi("http://127.0.0.1:4567", "/gantony/CorkDevQuestions/1.0.0");
+    Swagger::SWGPublicApi * publicApi = new Swagger::SWGPublicApi("http://178.62.124.192:4567", "/gantony/CorkDevQuestions/1.0.0");
     ApiWrapper * api = new ApiWrapper();
     api->setApi(publicApi);
 
